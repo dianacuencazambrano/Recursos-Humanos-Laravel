@@ -18,20 +18,20 @@ class ApiController extends Controller
             $aux = (string) $response->getBody();
 
             if (strcmp($aux, "error") == 0) {
-                return response()->json(['success' => 0, 'message' => 'Existen errores en los datos ingresados']);
+                return response()->json(['success' => 0, 'message' => 'Existen errores en los datos ingresados'], 201);
             }
             
             if ($response[0]['Emisor'] != $codigoEmisor) {
-                return response()->json(['success' => 0, 'message' => 'El codigo del Emisor no coincide']);
+                return response()->json(['success' => 0, 'message' => 'El codigo del Emisor no coincide'], 201);
             }
 
             if ($response[0]['OBSERVACION'] === 'CONTRASEÑA INVALIDA') {
-                return response()->json(['success' => 0, 'message' => 'Contraseña invalida']);
+                return response()->json(['success' => 0, 'message' => 'Contraseña invalida'], 201);
             }
 
-            return response()->json(['success' => 1, 'message' => $response[0]]);
+            return response()->json(['success' => 1, 'message' => $response[0]], 200);
         } catch (\Throwable $th) {
-            return response()->json(['success' => 0, 'message' => 'Error']);
+            return response()->json(['success' => 0, 'message' => 'Error'], 201);
         }
     }
 }

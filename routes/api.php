@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/login/{nombreUsuario}/{passwordUsuario}/{codigoEmisor}',[ApiController::class, 'login'])->name('login');
+Route::get('/login/{nombreUsuario}/{passwordUsuario}/{codigoEmisor}',[ApiController::class, 'login'])->name('api.login');
