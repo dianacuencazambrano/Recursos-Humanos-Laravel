@@ -29,9 +29,9 @@ class ApiController extends Controller
                 return response()->json(['success' => 0, 'message' => 'Contraseña invalida']);
             }
 
-            return response()->json(['success' => 1, 'message' => $response]);
+            return response()->json(['success' => 1, 'message' => $response[0]]);
         } catch (\Throwable $th) {
-            return response()->json(['success' => 1, 'message' => $th]);
+            return response()->json(['success' => 0, 'message' => $th]);
         }
     }
 }
