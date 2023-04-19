@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/login/',[ApiController::class, 'login'])->name('api.login');
+Route::post('/login/',[ApiController::class, 'login'])->name('api.login');
 Route::get('/getEmisor/',[ApiController::class, 'getComboEmisor'])->name('api.getEmisor');
 
 Route::get('/login2/{nombreUsuario}/{passwordUsuario}/{codigoEmisor}',[ApiController::class, 'login'])->name('api.login2');
