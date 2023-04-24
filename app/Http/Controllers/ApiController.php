@@ -55,6 +55,40 @@ class ApiController extends Controller
         }
     }
 
+    public function getCentrosCostos(){
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/CentroCostosSelect';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response[0]], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['success' => 0, 'message' => 'Error'], 201);
+        }
+    }
+    public function insertCentrosCostos(Request $request){
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/CentroCostosInsert?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
+
+            $response = Http::get($url);
+            if($response == ''){
+                return response()->json(['success' => 0, 'message' => 'El Centro de Costo ya existe'], 201);
+            }else{
+                return response()->json(['success' => 1, 'message' => $response[0]], 200);
+            }
+        } catch (\Throwable $th) {
+            return response()->json(['success' => 0, 'message' => 'Error'], 201);
+        }
+    }
+
+
+
+
+
+
+
     public function login2($nombreUsuario, $passwordUsuario, $codigoEmisor)
     {
         try {
