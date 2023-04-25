@@ -23,6 +23,7 @@ Route::post('/login/',[ApiController::class, 'login'])->name('api.login');
 Route::get('/getEmisor/',[ApiController::class, 'getComboEmisor'])->name('api.getEmisor');
 Route::get('/getCentrosCostos/',[ApiController::class, 'getCentrosCostos'])->name('api.getCentrosCostos');
 Route::get('/insertCentrosCostos/',[ApiController::class, 'insertCentrosCostos'])->name('api.insertCentrosCostos');
+Route::get('/deleteCentrosCostos/',[ApiController::class, 'deleteCentrosCostos'])->name('api.deleteCentrosCostos');
 
 Route::get('/login2/{nombreUsuario}/{passwordUsuario}/{codigoEmisor}',[ApiController::class, 'login'])->name('api.login2');
 

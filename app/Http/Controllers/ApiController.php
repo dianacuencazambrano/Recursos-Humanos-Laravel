@@ -83,7 +83,22 @@ class ApiController extends Controller
         }
     }
 
+    public function deleteCentrosCostos(Request $request){
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/CentroCostosDelete?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
 
+            $response = Http::get($url);
+
+            if($response[0]['Codigo'] != null && $response[0]['NombreCentroCostos'] != 'Eliminación Correcta'){
+                return response()->json(['success' => 0, 'message' => 'No se pudo eliminar'], 201);
+            }else{
+                return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
+            }
+        } catch (\Throwable $th) {
+            return response()->json(['success' => 0, 'message' => 'Error'], 201);
+        }
+    }
 
 
 
