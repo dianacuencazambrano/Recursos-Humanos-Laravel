@@ -19,11 +19,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login/',[ApiController::class, 'login'])->name('api.login');
+Route::get('/login/',[ApiController::class, 'login'])->name('api.login');
 Route::get('/getEmisor/',[ApiController::class, 'getComboEmisor'])->name('api.getEmisor');
 Route::get('/getCentrosCostos/',[ApiController::class, 'getCentrosCostos'])->name('api.getCentrosCostos');
 Route::get('/insertCentrosCostos/',[ApiController::class, 'insertCentrosCostos'])->name('api.insertCentrosCostos');
 Route::get('/deleteCentrosCostos/',[ApiController::class, 'deleteCentrosCostos'])->name('api.deleteCentrosCostos');
+Route::get('/updateCentrosCostos/',[ApiController::class, 'updateCentrosCostos'])->name('api.updateCentrosCostos');
+Route::get('/searchCentrosCostos/',[ApiController::class, 'searchCentrosCostos'])->name('api.searchCentrosCostos');
 
-Route::get('/login2/{nombreUsuario}/{passwordUsuario}/{codigoEmisor}',[ApiController::class, 'login'])->name('api.login2');
+Route::get('/login2/{nombreUsuario}/{passwordUsuario}/{codigoEmisor}',[ApiController::class, 'login2'])->name('api.login2');
 
