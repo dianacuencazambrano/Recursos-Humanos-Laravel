@@ -123,7 +123,7 @@ class ApiController extends Controller
             $url = $apiURL . '/api/Varios/CentroCostosSearch?descripcioncentrocostos=' . $request->descripcioncentrocostos;
 
             $response = Http::get($url);
-
+            return $response;
             if(!$response){
                 return response()->json(['success' => 0, 'message' => 'No se encontraron registros'], 201);
             }else{
