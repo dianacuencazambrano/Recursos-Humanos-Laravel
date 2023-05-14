@@ -1,6 +1,6 @@
 # Usamos la imagen oficial de PHP 8.0 con el módulo de Apache
 FROM php:8.0-apache
-
+FROM httpd
 # Instalamos las dependencias necesarias para Laravel y MySQL
 RUN apt-get update \
     && apt-get install -y \
@@ -61,6 +61,8 @@ RUN php artisan route:cache
 
 # Ejecutamos los comandos necesarios para generar el archivo de vista de caché de Laravel
 RUN php artisan view:cache
+
+RUN docker build -t mi-app .
 
 # Definimos el comando predeterminado que se ejecutará al iniciar el contenedor
 CMD ["apache2-foreground"]
