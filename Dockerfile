@@ -1,20 +1,21 @@
-FROM richarvey/nginx-php-fpm:1.9.1
+FROM php:8.0-apache
 
-COPY . .
+# Install required extensions
+RUN apt-get update && apt-get install -y \
+        libzip-dev \
+        libonig-dev \
+        zip \
+        unzip \
+        && docker-php-ext-install pdo_mysql zip
 
-# Image config
-ENV SKIP_COMPOSER 1
-ENV WEBROOT /var/www/html/public
-ENV PHP_ERRORS_STDERR 1
-ENV RUN_SCRIPTS 1
-ENV REAL_IP_HEADER 1
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Laravel config
-ENV APP_ENV production
-ENV APP_DEBUG false
-ENV LOG_CHANNEL stderr
+# Copy application files
+COPY . /var/www/html/
 
-# Allow composer to run as root
-ENV COMPOSER_ALLOW_SUPERUSER 1
+# Set up Apache
+RUN a2enmod rewrite
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-CMD ["/start.sh"]
+EXPOSE 80
