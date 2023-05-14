@@ -1,5 +1,6 @@
 FROM php:8.0-apache
-
+ENV WEBROOT /var/www/html/public
+ENV APP_DEBUG false
 # Install required extensions
 RUN apt-get update && apt-get install -y \
         libzip-dev \
