@@ -44,7 +44,7 @@ class ApiController extends Controller
     public function getComboEmisor()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/GetEmisor';
 
             $response = Http::get($url);
@@ -62,18 +62,15 @@ class ApiController extends Controller
             $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/CentroCostosSelect';
             $res = $client->request('GET', $url);
-            /* $res->headers->add(array(
-                'Cache-Control' => 'no-cache'
-             )); */
+
             $res = json_decode($res->getBody());
             return $res;
 
-
-            $apiURL = getenv('API_SERVICIOS');
+            /* $apiURL = getenv('API_SERVICIOS');
             $url = $apiURL . '/api/Varios/CentroCostosSelect';
 
             $response = Http::get($url);
-            return $response;
+            return $response; */
             //return response()->json(['success' => 1, 'message' => $response[0]], 200);
         } catch (\Exception $th) {
             //return response()->json(['success' => 0, 'message' => $th], 201);
