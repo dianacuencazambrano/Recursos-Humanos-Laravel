@@ -39,7 +39,7 @@ class ApiController extends Controller
             return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
-       
+
 
     public function getComboEmisor()
     {
@@ -55,8 +55,20 @@ class ApiController extends Controller
         }
     }
 
-    public function getCentrosCostos(){
+    public function getCentrosCostos()
+    {
         try {
+            $client = new Client();
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/CentroCostosSelect';
+            $res = $client->request('GET', $url);
+            /* $res->headers->add(array(
+                'Cache-Control' => 'no-cache'
+             )); */
+            $res = json_decode($res->getBody());
+            return $res;
+
+
             $apiURL = getenv('API_SERVICIOS');
             $url = $apiURL . '/api/Varios/CentroCostosSelect';
 
@@ -68,15 +80,16 @@ class ApiController extends Controller
             return $th;
         }
     }
-    public function insertCentrosCostos(Request $request){
+    public function insertCentrosCostos(Request $request)
+    {
         try {
             $apiURL = getenv('API_SERVICIOS');
             $url = $apiURL . '/api/Varios/CentroCostosInsert?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
 
             $response = Http::get($url);
-            if($response == ''){
+            if ($response == '') {
                 return response()->json(['success' => 0, 'message' => 'El Centro de Costo ya existe'], 201);
-            }else{
+            } else {
                 return response()->json(['success' => 1, 'message' => $response[0]], 200);
             }
         } catch (\Exception $th) {
@@ -84,16 +97,17 @@ class ApiController extends Controller
         }
     }
 
-    public function deleteCentrosCostos(Request $request){
+    public function deleteCentrosCostos(Request $request)
+    {
         try {
             $apiURL = getenv('API_SERVICIOS');
             $url = $apiURL . '/api/Varios/CentroCostosDelete?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
 
             $response = Http::get($url);
 
-            if($response[0]['Codigo'] != null && $response[0]['NombreCentroCostos'] != 'Eliminación Correcta'){
+            if ($response[0]['Codigo'] != null && $response[0]['NombreCentroCostos'] != 'Eliminación Correcta') {
                 return response()->json(['success' => 0, 'message' => 'No se pudo eliminar'], 201);
-            }else{
+            } else {
                 return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
             }
         } catch (\Exception $th) {
@@ -101,16 +115,17 @@ class ApiController extends Controller
         }
     }
 
-    public function updateCentrosCostos(Request $request){
+    public function updateCentrosCostos(Request $request)
+    {
         try {
             $apiURL = getenv('API_SERVICIOS');
             $url = $apiURL . '/api/Varios/CentroCostosUpdate?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
 
             $response = Http::get($url);
 
-            if($response[0]['Codigo'] != null && $response[0]['NombreCentroCostos'] != 'Actualizacíón Correcta'){
+            if ($response[0]['Codigo'] != null && $response[0]['NombreCentroCostos'] != 'Actualizacíón Correcta') {
                 return response()->json(['success' => 0, 'message' => 'No se pudo actualizar'], 201);
-            }else{
+            } else {
                 return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
             }
         } catch (\Exception $th) {
@@ -118,16 +133,17 @@ class ApiController extends Controller
         }
     }
 
-    public function searchCentrosCostos(Request $request){
+    public function searchCentrosCostos(Request $request)
+    {
         try {
             $apiURL = getenv('API_SERVICIOS');
             $url = $apiURL . '/api/Varios/CentroCostosSearch?descripcioncentrocostos=' . $request->descripcioncentrocostos;
 
             $response = Http::get($url);
             return $response;
-            if(!$response){
+            if (!$response) {
                 return response()->json(['success' => 0, 'message' => 'No se encontraron registros'], 201);
-            }else{
+            } else {
                 return $response;
             }
         } catch (\Exception $th) {
