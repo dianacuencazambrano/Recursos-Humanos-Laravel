@@ -36,7 +36,7 @@ class ApiController extends Controller
 
             return response()->json(['success' => 1, 'message' => $response[0]], 200);
         } catch (\Throwable $th) {
-            return response()->json(['success' => 0, 'message' => 'Error'], 201);
+            return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
        
@@ -51,7 +51,7 @@ class ApiController extends Controller
             return $response;
             //return response()->json(['success' => 1, 'message' => $response], 200);
         } catch (\Throwable $th) {
-            return response()->json(['success' => 0, 'message' => 'Error'], 201);
+            return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
 
@@ -64,7 +64,7 @@ class ApiController extends Controller
             return $response;
             //return response()->json(['success' => 1, 'message' => $response[0]], 200);
         } catch (\Throwable $th) {
-            return response()->json(['success' => 0, 'message' => 'Error'], 201);
+            return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
     public function insertCentrosCostos(Request $request){
@@ -79,7 +79,7 @@ class ApiController extends Controller
                 return response()->json(['success' => 1, 'message' => $response[0]], 200);
             }
         } catch (\Throwable $th) {
-            return response()->json(['success' => 0, 'message' => 'Error'], 201);
+            return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
 
@@ -96,7 +96,7 @@ class ApiController extends Controller
                 return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
             }
         } catch (\Throwable $th) {
-            return response()->json(['success' => 0, 'message' => 'Error'], 201);
+            return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
 
@@ -113,7 +113,7 @@ class ApiController extends Controller
                 return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
             }
         } catch (\Throwable $th) {
-            return response()->json(['success' => 0, 'message' => 'Error'], 201);
+            return response()->json(['success' => 0, 'message' => '$th'], 201);
         }
     }
 
@@ -130,7 +130,7 @@ class ApiController extends Controller
                 return $response;
             }
         } catch (\Throwable $th) {
-            return response()->json(['success' => 0, 'message' => 'Error'], 201);
+            return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
 
@@ -160,7 +160,7 @@ class ApiController extends Controller
 
             return response()->json(['success' => 1, 'message' => $response[0]], 200);
         } catch (\Throwable $th) {
-            return response()->json(['success' => 0, 'message' => 'Error'], 201);
+            return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
 }
