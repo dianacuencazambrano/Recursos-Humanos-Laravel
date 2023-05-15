@@ -20,3 +20,8 @@ php artisan config:cache
 
 echo 'Running dump-autoload...'
 composer dump-autoload
+
+php artisan route:clear
+php artisan config:clear
+php artisan cache:clear
+php artisan optimize:clear
