@@ -59,7 +59,7 @@ class ApiController extends Controller
     {
         try {
             $client = new Client();
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/CentroCostosSelect';
             $res = $client->request('GET', $url);
             /* $res->headers->add(array(
