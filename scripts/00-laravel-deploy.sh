@@ -14,3 +14,9 @@ php artisan migrate --force
 
 echo 'Running composer update...'
 composer update
+
+echo 'Running artisan config:cache...'
+php artisan config:cache
+
+echo 'Running dump-autoload...'
+composer dump-autoload
