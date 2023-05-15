@@ -64,7 +64,8 @@ class ApiController extends Controller
             return $response;
             //return response()->json(['success' => 1, 'message' => $response[0]], 200);
         } catch (\Exception $th) {
-            return response()->json(['success' => 0, 'message' => $th], 201);
+            //return response()->json(['success' => 0, 'message' => $th], 201);
+            return $th;
         }
     }
     public function insertCentrosCostos(Request $request){
