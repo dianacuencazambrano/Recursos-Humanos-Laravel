@@ -38,21 +38,21 @@ class AuthController extends Controller
 
         $token = bin2hex(random_bytes(16));
 
-        $user = User::where('nombreUsuario', $nombreUsuario)->get();
-        $id = $user[0]->id;
-        if (count($user) > 0) {
-            $user = User::find($id);
-            $user->token = $token;
-            $user->token_expires_at = \Carbon\Carbon::now()->addWeeks(1);
-            $user->save();
-        }else{
-            $user = new User();
-            $user->nombreUsuario = $nombreUsuario;
-            $user->passwordUsuario = bcrypt($passwordUsuario);
-            $user->token = $token;
-            $user->token_expires_at = \Carbon\Carbon::now()->addWeeks(1);
-            $user->save();
-        }
+        // $user = User::where('nombreUsuario', $nombreUsuario)->get();
+        // $id = $user[0]->id;
+        // if (count($user) > 0) {
+        //     $user = User::find($id);
+        //     $user->token = $token;
+        //     $user->token_expires_at = \Carbon\Carbon::now()->addWeeks(1);
+        //     $user->save();
+        // }else{
+        //     $user = new User();
+        //     $user->nombreUsuario = $nombreUsuario;
+        //     $user->passwordUsuario = bcrypt($passwordUsuario);
+        //     $user->token = $token;
+        //     $user->token_expires_at = \Carbon\Carbon::now()->addWeeks(1);
+        //     $user->save();
+        // }
 
         return response()->json(['access_token' => $token]);
     }
