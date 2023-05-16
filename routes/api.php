@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login/',[ApiController::class, 'login'])->name('api.login');
+Route::post('/login/',[AuthController::class, 'login'])->name('auth.login');
+Route::post('/logout/',[AuthController::class, 'logout'])->name('auth.logout');
+
 Route::get('/getEmisor/',[ApiController::class, 'getComboEmisor'])->name('api.getEmisor');
 Route::get('/getCentrosCostos/',[ApiController::class, 'getCentrosCostos'])->name('api.getCentrosCostos');
 Route::post('/insertCentrosCostos/',[ApiController::class, 'insertCentrosCostos'])->name('api.insertCentrosCostos');
