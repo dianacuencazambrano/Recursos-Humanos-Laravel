@@ -37,6 +37,7 @@ class ApiController extends Controller
             $url = $apiURL . '/api/Varios/CentroCostosSelect';
 
             $response = Http::get($url);
+            $response = json_decode($response->getBody());
             return $response;
             //return response()->json(['success' => 1, 'message' => $response[0]], 200);
         } catch (\Exception $th) {
