@@ -92,14 +92,13 @@ class AuthController extends Controller
             $url = $apiURL . '/api/Varios/GetAutorizador?usuario=' . $request->usuario . '&password=' . $request->password;
 
             $response = Http::get($url);
-            return $response[0];
-            /* if (!$response) {
-                return response()->json(['success' => 0, 'message' => 'No se encontraron registros'], 201);
-            } else {
-                return $response;
-            } */
+            if ($response[0]['OBSERVACION'] == "ACCESO NO PERMITIDO") {
+                return response()->json(['success' => 0, 'message' => 'Acceso no permitido'], 201);
+            }else{
+                return response()->json(['success' => 1, 'message' => $response[0]], 200);
+            }
         } catch (\Exception $th) {
-            return response()->json(['success' => 0, 'message' => $th], 201);
+            return response()->json(['success' => 0, 'message' => 'Existen errores en los datos ingresados'], 201);
         }
     }
 }
