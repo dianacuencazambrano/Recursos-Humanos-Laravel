@@ -119,7 +119,7 @@ class ApiController extends Controller
     public function getMovimientoPlanilla()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/MovimientoPlanillaSelect';
 
             $response = Http::get($url);

@@ -57,6 +57,8 @@ class AuthController extends Controller
         date_default_timezone_set('America/Guayaquil');
         $date = date("d/m/Y H:i:s");
         return response()->json([
+            'success' => 1,
+            'message' => 'Ingreso Exitoso',
             'access_token' => $token,
             'user' => $nombreUsuario,
             'date' => $date,
