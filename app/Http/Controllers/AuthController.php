@@ -18,10 +18,11 @@ class AuthController extends Controller
         $passwordUsuario = $data['passwordUsuario'];
         $codigoEmisor = $data['codigoEmisor'];
 
-        $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
+        $apiURL = getenv('API_SERVICIOS');
         $url = $apiURL . '/api/Usuarios?usuario=' . $nombreUsuario . '&password=' . $passwordUsuario;
 
         $response = Http::get($url);
+        $company = $response[0]['NOMBRECOMPANIA'];
         $aux = (string) $response->getBody();
 
         if (strcmp($aux, "error") == 0) {
@@ -53,8 +54,14 @@ class AuthController extends Controller
         //     $user->token_expires_at = \Carbon\Carbon::now()->addWeeks(1);
         //     $user->save();
         // }
-
-        return response()->json(['access_token' => $token]);
+        date_default_timezone_set('America/Guayaquil');
+        $date = date("d/m/Y H:i:s");
+        return response()->json([
+            'access_token' => $token,
+            'user' => $nombreUsuario,
+            'date' => $date,
+            'company' => $company
+        ]);
     }
 
     public function logout(Request $request)
@@ -72,34 +79,19 @@ class AuthController extends Controller
             return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
-
-    public function login2(Request $request)
+    public function loginAutorizador(Request $request)
     {
         try {
-            $data = $request->all();
-            $nombreUsuario = $data['nombreUsuario'];
-            $passwordUsuario = $data['passwordUsuario'];
-            $codigoEmisor = $data['codigoEmisor'];
-
-            $apiURL = getenv('API_SERVICIOS');
-            $url = $apiURL . '/api/Usuarios?usuario=' . $nombreUsuario . '&password=' . $passwordUsuario;
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
+            $url = $apiURL . '/api/Varios/GetAutorizador?usuario=' . $request->usuario . '&password=' . $request->password;
 
             $response = Http::get($url);
-            $aux = (string) $response->getBody();
-
-            if (strcmp($aux, "error") == 0) {
-                return response()->json(['success' => 0, 'message' => 'Existen errores en los datos ingresados'], 201);
-            }
-
-            if ($response[0]['Emisor'] != $codigoEmisor) {
-                return response()->json(['success' => 0, 'message' => 'El codigo del Emisor no coincide'], 201);
-            }
-
-            if ($response[0]['OBSERVACION'] === 'CONTRASEÑA INVALIDA') {
-                return response()->json(['success' => 0, 'message' => 'Contraseña invalida'], 201);
-            }
-
-            return response()->json(['success' => 1, 'message' => $response[0]], 200);
+            return $response[0];
+            /* if (!$response) {
+                return response()->json(['success' => 0, 'message' => 'No se encontraron registros'], 201);
+            } else {
+                return $response;
+            } */
         } catch (\Exception $th) {
             return response()->json(['success' => 0, 'message' => $th], 201);
         }
