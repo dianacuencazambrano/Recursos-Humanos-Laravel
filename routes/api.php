@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TrabajadorController;
 use App\Http\Controllers\CentroCostosController;
 use App\Http\Controllers\MovimientoPlantillaController;
 
@@ -59,4 +60,9 @@ Route::post('/deleteMovimientoPlanilla/',[MovimientoPlantillaController::class, 
 Route::post('/updateMovimientoPlanilla/',[MovimientoPlantillaController::class, 'updateMovimientoPlanilla'])->name('movplan.updateMovimientoPlanilla');
 Route::post('/searchMovimientoPlanilla/',[MovimientoPlantillaController::class, 'searchMovimientoPlanilla'])->name('movplan.searchMovimientoPlanilla');
 
+/** --TrabajadorController*/
+Route::post('/getTrabajador/',[TrabajadorController::class, 'getTrabajador'])->name('trabajador.getTrabajador');
+Route::post('/insertTrabajador/',[TrabajadorController::class, 'insertTrabajador'])->name('trabajador.insertTrabajador');
+Route::post('/deleteTrabajador/',[TrabajadorController::class, 'deleteTrabajador'])->name('trabajador.deleteTrabajador');
+Route::post('/updateTrabajador/',[TrabajadorController::class, 'updateTrabajador'])->name('trabajador.updateTrabajador');
 
