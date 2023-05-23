@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CentroCostosController;
+use App\Http\Controllers\MovimientoPlantillaController;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,24 +24,39 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+/** --AuthController*/
 Route::post('/login/',[AuthController::class, 'login'])->name('auth.login');
 Route::post('/logout/',[AuthController::class, 'logout'])->name('auth.logout');
 Route::post('/loginAutorizador/',[AuthController::class, 'loginAutorizador'])->name('auth.loginAutorizador');
 
-Route::get('/getEmisor/',[ApiController::class, 'getComboEmisor'])->name('api.getEmisor');
-Route::get('/getCentrosCostos/',[ApiController::class, 'getCentrosCostos'])->name('api.getCentrosCostos');
-Route::post('/insertCentrosCostos/',[ApiController::class, 'insertCentrosCostos'])->name('api.insertCentrosCostos');
-Route::post('/deleteCentrosCostos/',[ApiController::class, 'deleteCentrosCostos'])->name('api.deleteCentrosCostos');
-Route::post('/updateCentrosCostos/',[ApiController::class, 'updateCentrosCostos'])->name('api.updateCentrosCostos');
-Route::post('/searchCentrosCostos/',[ApiController::class, 'searchCentrosCostos'])->name('api.searchCentrosCostos');
+/** --ApiController*/
+Route::get('/getEmisor/',[ApiController::class, 'getEmisor'])->name('api.getEmisor');
+Route::get('/getTiposOperacion/',[ApiController::class, 'getTiposOperacion'])->name('api.getTiposOperacion');
+Route::get('/getMovExcepcion1y2/',[ApiController::class, 'getMovExcepcion1y2'])->name('api.getMovExcepcion1y2');
+Route::get('/getMovExcepcion3/',[ApiController::class, 'getMovExcepcion3'])->name('api.getMovExcepcion3');
+Route::get('/getTrabaAfectaIESS/',[ApiController::class, 'getTrabaAfectaIESS'])->name('api.getTrabaAfectaIESS');
+Route::get('/getTrabAfecImpuestoRenta/',[ApiController::class, 'getTrabAfecImpuestoRenta'])->name('api.getTrabAfecImpuestoRenta');
+Route::get('/getGenero/',[ApiController::class, 'getGenero'])->name('api.getGenero');
+Route::get('/getEstadoTrabajador/',[ApiController::class, 'getEstadoTrabajador'])->name('api.getEstadoTrabajador');
+Route::get('/getTipoContrato/',[ApiController::class, 'getTipoContrato'])->name('api.getTipoContrato');
+Route::get('/getTipoCese/',[ApiController::class, 'getTipoCese'])->name('api.getTipoCese');
+Route::get('/getEstadoCivil/',[ApiController::class, 'getEstadoCivil'])->name('api.getEstadoCivil');
+Route::get('/getEsReingreso/',[ApiController::class, 'getEsReingreso'])->name('api.getEsReingreso');
+Route::get('/getTipoCuenta/',[ApiController::class, 'getTipoCuenta'])->name('api.getTipoCuenta');
 
-Route::get('/getMovimientoPlanilla/',[ApiController::class, 'getMovimientoPlanilla'])->name('api.getMovimientoPlanilla');
-Route::post('/insertMovimientoPlanilla/',[ApiController::class, 'insertMovimientoPlanilla'])->name('api.insertMovimientoPlanilla');
-Route::post('/deleteMovimientoPlanilla/',[ApiController::class, 'deleteMovimientoPlanilla'])->name('api.deleteMovimientoPlanilla');
-Route::post('/updateMovimientoPlanilla/',[ApiController::class, 'updateMovimientoPlanilla'])->name('api.updateMovimientoPlanilla');
-Route::post('/searchMovimientoPlanilla/',[ApiController::class, 'searchMovimientoPlanilla'])->name('api.searchMovimientoPlanilla');
+/** --CentroCostosController*/
+Route::get('/getCentrosCostos/',[CentroCostosController::class, 'getCentrosCostos'])->name('cencost.getCentrosCostos');
+Route::post('/insertCentrosCostos/',[CentroCostosController::class, 'insertCentrosCostos'])->name('cencost.insertCentrosCostos');
+Route::post('/deleteCentrosCostos/',[CentroCostosController::class, 'deleteCentrosCostos'])->name('cencost.deleteCentrosCostos');
+Route::post('/updateCentrosCostos/',[CentroCostosController::class, 'updateCentrosCostos'])->name('cencost.updateCentrosCostos');
+Route::post('/searchCentrosCostos/',[CentroCostosController::class, 'searchCentrosCostos'])->name('cencost.searchCentrosCostos');
 
+/** --MovimientoPlantillaController*/
+Route::get('/getMovimientoPlanilla/',[MovimientoPlantillaController::class, 'getMovimientoPlanilla'])->name('movplan.getMovimientoPlanilla');
+Route::post('/insertMovimientoPlanilla/',[MovimientoPlantillaController::class, 'insertMovimientoPlanilla'])->name('movplan.insertMovimientoPlanilla');
+Route::post('/deleteMovimientoPlanilla/',[MovimientoPlantillaController::class, 'deleteMovimientoPlanilla'])->name('movplan.deleteMovimientoPlanilla');
+Route::post('/updateMovimientoPlanilla/',[MovimientoPlantillaController::class, 'updateMovimientoPlanilla'])->name('movplan.updateMovimientoPlanilla');
+Route::post('/searchMovimientoPlanilla/',[MovimientoPlantillaController::class, 'searchMovimientoPlanilla'])->name('movplan.searchMovimientoPlanilla');
 
-
-Route::get('/login2/{nombreUsuario}/{passwordUsuario}/{codigoEmisor}',[ApiController::class, 'login2'])->name('api.login2');
 

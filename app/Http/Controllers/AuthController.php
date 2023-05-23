@@ -19,7 +19,7 @@ class AuthController extends Controller
             $passwordUsuario = $data['passwordUsuario'];
             $codigoEmisor = $data['codigoEmisor'];
 
-            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
+            $apiURL = getenv('API_SERVICIOS');
             $url = $apiURL . '/api/Usuarios?usuario=' . $nombreUsuario . '&password=' . $passwordUsuario;
 
             $response = Http::get($url);
@@ -88,7 +88,7 @@ class AuthController extends Controller
     public function loginAutorizador(Request $request)
     {
         try {
-            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
+            $apiURL = getenv('API_SERVICIOS');
             $url = $apiURL . '/api/Varios/GetAutorizador?usuario=' . $request->usuario . '&password=' . $request->password;
 
             $response = Http::get($url);

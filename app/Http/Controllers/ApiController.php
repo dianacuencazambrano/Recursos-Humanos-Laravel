@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class ApiController extends Controller
 {
-    public function getComboEmisor()
+    public function getEmisor()
     {
         try {
             $apiURL = getenv('API_SERVICIOS');
@@ -22,212 +22,208 @@ class ApiController extends Controller
         }
     }
 
-    public function getCentrosCostos()
+    //[{"CodigoTipooperacion":"Egresos","NombreOperacion":"E"},{"CodigoTipooperacion":"Ingresos","NombreOperacion":"I"}]
+    public function getTiposOperacion()
     {
         try {
-            // $client = new Client();
-            // $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
-            // $url = $apiURL . '/api/Varios/CentroCostosSelect';
-            // $res = $client->request('GET', $url);
-
-            // $res = json_decode($res->getBody());
-            // return $res;
-
             $apiURL = getenv('API_SERVICIOS');
-            $url = $apiURL . '/api/Varios/CentroCostosSelect';
+            $url = $apiURL . '/api/Varios/TipoOperacion';
 
             $response = Http::get($url);
-            $response = $response->getBody();
             return $response;
-            //return response()->json(['success' => 1, 'message' => $response[0]], 200);
+            //return response()->json(['success' => 1, 'message' => $response], 200);
         } catch (\Exception $th) {
-            //return response()->json(['success' => 0, 'message' => $th], 201);
             return $th;
-        }
-    }
-    public function insertCentrosCostos(Request $request)
-    {
-        try {
-            $apiURL = getenv('API_SERVICIOS');
-            $url = $apiURL . '/api/Varios/CentroCostosInsert?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
-
-            $response = Http::get($url);
-            if ($response == '') {
-                return response()->json(['success' => 0, 'message' => 'El Centro de Costo ya existe'], 201);
-            } else {
-                return response()->json(['success' => 1, 'message' => $response[0]], 200);
-            }
-        } catch (\Exception $th) {
             return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
 
-    public function deleteCentrosCostos(Request $request)
+    //[{"CodigoMovimientoExce":"Movimiento Planilla","DesripMovimientoExce":"M"},
+    //{"CodigoMovimientoExce":"Cuenta Corriente","DesripMovimientoExce":"C"},
+    //{"CodigoMovimientoExce":"Horas Movimiento Planilla","DesripMovimientoExce":"H"}]
+    public function getMovExcepcion1y2()
     {
         try {
             $apiURL = getenv('API_SERVICIOS');
-            $url = $apiURL . '/api/Varios/CentroCostosDelete?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
-
-            $response = Http::get($url);
-
-            if ($response[0]['Codigo'] != null && $response[0]['NombreCentroCostos'] != 'Eliminación Correcta') {
-                return response()->json(['success' => 0, 'message' => 'No se pudo eliminar'], 201);
-            } else {
-                return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
-            }
-        } catch (\Exception $th) {
-            return response()->json(['success' => 0, 'message' => $th], 201);
-        }
-    }
-
-    public function updateCentrosCostos(Request $request)
-    {
-        try {
-            $apiURL = getenv('API_SERVICIOS');
-            $url = $apiURL . '/api/Varios/CentroCostosUpdate?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
-
-            $response = Http::get($url);
-
-            if ($response[0]['Codigo'] != null && $response[0]['NombreCentroCostos'] != 'Actualizacíón Correcta') {
-                return response()->json(['success' => 0, 'message' => 'No se pudo actualizar'], 201);
-            } else {
-                return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
-            }
-        } catch (\Exception $th) {
-            return response()->json(['success' => 0, 'message' => '$th'], 201);
-        }
-    }
-
-    public function searchCentrosCostos(Request $request)
-    {
-        try {
-            $apiURL = getenv('API_SERVICIOS');
-            $url = $apiURL . '/api/Varios/CentroCostosSearch?descripcioncentrocostos=' . $request->descripcioncentrocostos;
+            $url = $apiURL . '/api/Varios/MovimientosExcepcion1y2';
 
             $response = Http::get($url);
             return $response;
-            if (!$response) {
-                return response()->json(['success' => 0, 'message' => 'No se encontraron registros'], 201);
-            } else {
-                return $response;
-            }
+            //return response()->json(['success' => 1, 'message' => $response], 200);
         } catch (\Exception $th) {
             return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
 
-    public function getMovimientoPlanilla()
-    {
-        try {
-            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
-            $url = $apiURL . '/api/Varios/MovimientoPlanillaSelect';
-
-            $response = Http::get($url);
-            $response = $response->getBody();
-            return $response;
-            //return response()->json(['success' => 1, 'message' => $response[0]], 200);
-        } catch (\Exception $th) {
-            //return response()->json(['success' => 0, 'message' => $th], 201);
-            return $th;
-        }
-    }
-
-    public function insertMovimientoPlanilla(Request $request)
+    // [{"CodigoMovimientoExce":"Costa","DesripMovimientoExce":"C"},
+    // {"CodigoMovimientoExce":"No Aplica","DesripMovimientoExce":"N"},
+    // {"CodigoMovimientoExce":"No Procesar","DesripMovimientoExce":"X"},
+    // {"CodigoMovimientoExce":"Sierra","DesripMovimientoExce":"S"}]
+    public function getMovExcepcion3()
     {
         try {
             $apiURL = getenv('API_SERVICIOS');
-            $url = $apiURL . '/api/Varios/MovimientoPlanillaInsert?
-            codigocentrocostos=conceptos='.$request->conceptos .
-            '&prioridad='.$request->conceptos .
-            '&tipooperacion='.$request->tipooperacion .
-            '&cuenta1='.$request->cuenta1 .
-            '&cuenta2='.$request->cuenta2 .
-            '&cuenta3='.$request->cuenta3 .
-            '&cuenta4='.$request->cuenta4 .
-            '&MovimientoExcepcion1='.$request->MovimientoExcepcion1 .
-            '&MovimientoExcepcion2='.$request->MovimientoExcepcion2 .
-            '&MovimientoExcepcion3='.$request->MovimientoExcepcion3 .
-            '&Traba_Aplica_iess='.$request->Traba_Aplica_iess .
-            '&Traba_Proyecto_imp_renta='.$request->Traba_Proyecto_imp_renta .
-            '&Aplica_Proy_Renta='.$request->Aplica_Proy_Renta .
-            '&Empresa_Afecta_Iess='.$request->Empresa_Afecta_Iess;
-
-            $response = Http::get($url);
-            $response = $response->getBody();
-            return $response[0];
-            // if ($response == '') {
-            //     return response()->json(['success' => 0, 'message' => 'El Centro de Costo ya existe'], 201);
-            // } else {
-            //     return response()->json(['success' => 1, 'message' => $response[0]], 200);
-            // }
-        } catch (\Exception $th) {
-            return response()->json(['success' => 0, 'message' => $th], 201);
-        }
-    }
-
-    public function updateMovimientoPlanilla(Request $request)
-    {
-        try {
-            $apiURL = getenv('API_SERVICIOS');
-            $url = $apiURL . '/api/Varios/MovimientoPlanillaUpdate?
-            codigocentrocostos=conceptos='.$request->conceptos .
-            '&prioridad='.$request->conceptos .
-            '&tipooperacion='.$request->tipooperacion .
-            '&cuenta1='.$request->cuenta1 .
-            '&cuenta2='.$request->cuenta2 .
-            '&cuenta3='.$request->cuenta3 .
-            '&cuenta4='.$request->cuenta4 .
-            '&MovimientoExcepcion1='.$request->MovimientoExcepcion1 .
-            '&MovimientoExcepcion2='.$request->MovimientoExcepcion2 .
-            '&MovimientoExcepcion3='.$request->MovimientoExcepcion3 .
-            '&Traba_Aplica_iess='.$request->Traba_Aplica_iess .
-            '&Traba_Proyecto_imp_renta='.$request->Traba_Proyecto_imp_renta .
-            '&Aplica_Proy_Renta='.$request->Aplica_Proy_Renta .
-            '&Empresa_Afecta_Iess='.$request->Empresa_Afecta_Iess;
-
-            $response = Http::get($url);
-            return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
-            /* if ($response[0]['Codigo'] != null && $response[0]['NombreCentroCostos'] != 'Actualizacíón Correcta') {
-                return response()->json(['success' => 0, 'message' => 'No se pudo actualizar'], 201);
-            } else {
-                return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
-            } */
-        } catch (\Exception $th) {
-            return response()->json(['success' => 0, 'message' => '$th'], 201);
-        }
-    }
-
-    public function deleteMovimientoPlanilla(Request $request)
-    {
-        try {
-            $apiURL = getenv('API_SERVICIOS');
-            $url = $apiURL . '/api/Varios/MovimeintoPlanillaDelete?codigomovimiento=' . $request->codigomovimiento . '&descripcionomovimiento=' . $request->descripcionomovimiento;
-
-            $response = Http::get($url);
-            return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
-            /* if ($response[0]['Codigo'] != null && $response[0]['NombreCentroCostos'] != 'Eliminación Correcta') {
-                return response()->json(['success' => 0, 'message' => 'No se pudo eliminar'], 201);
-            } else {
-                return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
-            } */
-        } catch (\Exception $th) {
-            return response()->json(['success' => 0, 'message' => $th], 201);
-        }
-    }
-
-    public function searchMovimientoPlanilla(Request $request)
-    {
-        try {
-            $apiURL = getenv('API_SERVICIOS');
-            $url = $apiURL . '/api/Varios/MovimientoPlanillaSearch?Concepto=' . $request->Concepto;
+            $url = $apiURL . '/api/Varios/MovimientosExcepcion3';
 
             $response = Http::get($url);
             return $response;
-            if (!$response) {
-                return response()->json(['success' => 0, 'message' => 'No se encontraron registros'], 201);
-            } else {
-                return $response;
-            }
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+    
+    // [{"CodigoMovimientoExce":"Si","DesripMovimientoExce":"1"},
+    // {"CodigoMovimientoExce":"No","DesripMovimientoExce":"0"}]
+    public function getTrabaAfectaIESS()
+    {
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/TrabaAfectaIESS';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+
+    // [{"CodigoMovimientoExce":"Aplica","DesripMovimientoExce":"1"},
+    // {"CodigoMovimientoExce":"No Aplica","DesripMovimientoExce":"0"}]
+    public function getTrabAfecImpuestoRenta()
+    {
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/TrabAfecImpuestoRenta';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+
+    // [{"Codigo":"Masculino ","Descripcion":"M"},
+    // {"Codigo":"Femenino","Descripcion":"F"}]
+    public function getGenero()
+    {
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/Genero';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+
+    // [{"Codigo":"Vacaciones","Descripcion":"V"},
+    // {"Codigo":"Cesado","Descripcion":"*"},
+    // {"Codigo":"Activo ","Descripcion":"A"}]
+    public function getEstadoTrabajador()
+    {
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/EstadoTrabajador';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+
+
+    // [{"Codigo":"De_Aprendizaje ","Descripcion":"7"},
+    // {"Codigo":"Servicios_Domésticos","Descripcion":"10"},
+    // {"Codigo":"De_Temporada","Descripcion":"6"},
+    // {"Codigo":"Evento_Continuo ","Descripcion":"4"},
+    // {"Codigo":"Indefinido ","Descripcion":"1"},
+    // {"Codigo":"Entre_Artesanos_Operarios","Descripcion":"9"},
+    // {"Codigo":"Evento_Discontinuo","Descripcion":"5"},
+    // {"Codigo":"De_Destajo","Descripcion":"8"},
+    // {"Codigo":"Obra_Cierta","Descripcion":"2"},
+    // {"Codigo":"Jornada_Parcial_Permanente","Descripcion":"3"}]
+    public function getTipoContrato()
+    {
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/TipoContrato';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+
+    // [{"Codigo":"Renuncia_Exigida","Descripcion":"3"},
+    // {"Codigo":"Reduccion_Personal","Descripcion":"2"},
+    // {"Codigo":"Renuncia_Voluntaria ","Descripcion":"1"}]
+    public function getTipoCese()
+    {
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/TipoCese';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+
+    // [{"Codigo":"Casado","Descripcion":"2"},
+    // {"Codigo":"Soltero ","Descripcion":"1"},
+    // {"Codigo":"Divorciado","Descripcion":"3"},
+    // {"Codigo":"Unión_Libre","Descripcion":"5"},
+    // {"Codigo":"Viudo","Descripcion":"4"}]
+    public function getEstadoCivil()
+    {
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/EstadoCivil';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+
+    //[{"Codigo":"No","Descripcion":"0"},{"Codigo":"Si ","Descripcion":"1"}]
+    public function getEsReingreso()
+    {
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/EsReingreso';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+
+    //[{"Codigo":"Corriente","Descripcion":"2"},{"Codigo":"Ahorros ","Descripcion":"1"}]
+    public function getTipoCuenta()
+    {
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/TipoCuenta';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
         } catch (\Exception $th) {
             return response()->json(['success' => 0, 'message' => $th], 201);
         }
