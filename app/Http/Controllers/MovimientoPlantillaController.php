@@ -30,8 +30,8 @@ class MovimientoPlantillaController extends Controller
         try {
             $apiURL = getenv('API_SERVICIOS');
             $url = $apiURL . '/api/Varios/MovimientoPlanillaInsert?
-            codigocentrocostos=conceptos='.$request->conceptos .
-            '&prioridad='.$request->conceptos .
+             conceptos='.$request->conceptos .
+            '&prioridad='.$request->prioridad .
             '&tipooperacion='.$request->tipooperacion .
             '&cuenta1='.$request->cuenta1 .
             '&cuenta2='.$request->cuenta2 .
@@ -63,8 +63,9 @@ class MovimientoPlantillaController extends Controller
         try {
             $apiURL = getenv('API_SERVICIOS');
             $url = $apiURL . '/api/Varios/MovimientoPlanillaUpdate?
-            codigocentrocostos=conceptos='.$request->conceptos .
-            '&prioridad='.$request->conceptos .
+            codigoplanilla=' . $request->codigoplanilla .
+            '&conceptos='.$request->conceptos .
+            '&prioridad='.$request->prioridad .
             '&tipooperacion='.$request->tipooperacion .
             '&cuenta1='.$request->cuenta1 .
             '&cuenta2='.$request->cuenta2 .
