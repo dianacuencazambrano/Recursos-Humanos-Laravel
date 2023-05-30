@@ -48,24 +48,9 @@ class MovimientoPlantillaController extends Controller
     {
         try {
             $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
-            $url = $apiURL . '/api/Varios/MovimientoPlanillaUpdate?
-            codigoplanilla=' . $request->codigoplanilla .
-            '&conceptos='.$request->conceptos .
-            '&prioridad='.$request->prioridad .
-            '&tipooperacion='.$request->tipooperacion .
-            '&cuenta1='.$request->cuenta1 .
-            '&cuenta2='.$request->cuenta2 .
-            '&cuenta3='.$request->cuenta3 .
-            '&cuenta4='.$request->cuenta4 .
-            '&MovimientoExcepcion1='.$request->MovimientoExcepcion1 .
-            '&MovimientoExcepcion2='.$request->MovimientoExcepcion2 .
-            '&MovimientoExcepcion3='.$request->MovimientoExcepcion3 .
-            '&Traba_Aplica_iess='.$request->Traba_Aplica_iess .
-            '&Traba_Proyecto_imp_renta='.$request->Traba_Proyecto_imp_renta .
-            '&Aplica_Proy_Renta='.$request->Aplica_Proy_Renta .
-            '&Empresa_Afecta_Iess='.$request->Empresa_Afecta_Iess;
-
+            $url = $apiURL . '/api/Varios/MovimientoPlanillaUpdate?codigoplanilla='.$request->codigoplanilla.'&conceptos='.$request->conceptos.'&prioridad='.$request->prioridad.'&tipooperacion='.$request->tipooperacion.'&cuenta1='.$request->cuenta1.'&cuenta2='.$request->cuenta2.'&cuenta3='.$request->cuenta3.'&cuenta4='.$request->cuenta4.'&MovimientoExcepcion1='.$request->MovimientoExcepcion1.'&MovimientoExcepcion2='.$request->MovimientoExcepcion2.'&MovimientoExcepcion3='.$request->MovimientoExcepcion3.'&Traba_Aplica_iess='.$request->Traba_Aplica_iess.'&Traba_Proyecto_imp_renta='.$request->Traba_Proyecto_imp_renta.'&Aplica_Proy_Renta='.$request->Aplica_Proy_Renta.'&Empresa_Afecta_Iess='.$request->Empresa_Afecta_Iess;
             $response = Http::get($url);
+            $response = $response->getBody();
             return response()->json(['success' => 1, 'message' => $response], 200);
             /* if ($response[0]['Codigo'] != null && $response[0]['NombreCentroCostos'] != 'Actualizacíón Correcta') {
                 return response()->json(['success' => 0, 'message' => 'No se pudo actualizar'], 201);
