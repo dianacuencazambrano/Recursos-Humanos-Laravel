@@ -12,7 +12,7 @@ class MovimientoPlantillaController extends Controller
     public function getMovimientoPlanilla()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/MovimientoPlanillaSelect';
 
             $response = Http::get($url);
@@ -28,7 +28,7 @@ class MovimientoPlantillaController extends Controller
     public function insertMovimientoPlanilla(Request $request)
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/MovimientoPlanillaInsert?
              conceptos='.$request->conceptos .
             '&prioridad='.$request->prioridad .
@@ -61,7 +61,7 @@ class MovimientoPlantillaController extends Controller
     public function updateMovimientoPlanilla(Request $request)
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/MovimientoPlanillaUpdate?
             codigoplanilla=' . $request->codigoplanilla .
             '&conceptos='.$request->conceptos .
@@ -94,7 +94,7 @@ class MovimientoPlantillaController extends Controller
     public function deleteMovimientoPlanilla(Request $request)
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/MovimeintoPlanillaDelete?codigomovimiento=' . $request->codigomovimiento . '&descripcionomovimiento=' . $request->descripcionomovimiento;
 
             $response = Http::get($url);
@@ -112,7 +112,7 @@ class MovimientoPlantillaController extends Controller
     public function searchMovimientoPlanilla(Request $request)
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/MovimientoPlanillaSearch?Concepto=' . $request->Concepto;
 
             $response = Http::get($url);
