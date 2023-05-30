@@ -98,7 +98,7 @@ class MovimientoPlantillaController extends Controller
             $url = $apiURL . '/api/Varios/MovimeintoPlanillaDelete?codigomovimiento=' . $request->codigomovimiento . '&descripcionomovimiento=' . $request->descripcionomovimiento;
 
             $response = Http::get($url);
-            return response()->json(['success' => 1, 'message' => $response[0]['NombreCentroCostos']], 200);
+            return response()->json(['success' => 1, 'message' => $response[0]['Concepto']], 200);
             /* if ($response[0]['Codigo'] != null && $response[0]['NombreCentroCostos'] != 'Eliminación Correcta') {
                 return response()->json(['success' => 0, 'message' => 'No se pudo eliminar'], 201);
             } else {
