@@ -47,7 +47,7 @@ Route::get('/getEsReingreso/',[ApiController::class, 'getEsReingreso'])->name('a
 Route::get('/getTipoCuenta/',[ApiController::class, 'getTipoCuenta'])->name('api.getTipoCuenta');
 Route::get('/getTipoTrabajador/',[ApiController::class, 'getTipoTrabajador'])->name('api.getTipoTrabajador');
 
-/** --CentroCostosController*/
+/** --CentroCostosController**/
 Route::get('/getCentrosCostos/',[CentroCostosController::class, 'getCentrosCostos'])->name('cencost.getCentrosCostos');
 Route::post('/insertCentrosCostos/',[CentroCostosController::class, 'insertCentrosCostos'])->name('cencost.insertCentrosCostos');
 Route::post('/deleteCentrosCostos/',[CentroCostosController::class, 'deleteCentrosCostos'])->name('cencost.deleteCentrosCostos');
