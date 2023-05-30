@@ -228,4 +228,18 @@ class ApiController extends Controller
             return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }
+
+    public function getTipoTrabajador()
+    {
+        try {
+            $apiURL = getenv('API_SERVICIOS');
+            $url = $apiURL . '/api/Varios/TipoTrabajador';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
 }

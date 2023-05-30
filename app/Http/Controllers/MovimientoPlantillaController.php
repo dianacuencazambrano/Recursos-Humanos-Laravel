@@ -84,7 +84,7 @@ class MovimientoPlantillaController extends Controller
     {
         try {
             $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
-            $url = $apiURL . '/api/Varios/MovimientoPlanillaSearch?Concepto=' . $request->Concepto;
+            $url = $apiURL . '/api/Varios/MovimientoPlanillaSearch?Concepto='.$request->Concepto;
 
             $response = Http::get($url);
             return $response;

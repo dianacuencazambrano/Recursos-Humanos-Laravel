@@ -45,6 +45,7 @@ Route::get('/getTipoCese/',[ApiController::class, 'getTipoCese'])->name('api.get
 Route::get('/getEstadoCivil/',[ApiController::class, 'getEstadoCivil'])->name('api.getEstadoCivil');
 Route::get('/getEsReingreso/',[ApiController::class, 'getEsReingreso'])->name('api.getEsReingreso');
 Route::get('/getTipoCuenta/',[ApiController::class, 'getTipoCuenta'])->name('api.getTipoCuenta');
+Route::get('/getTipoTrabajador/',[ApiController::class, 'getTipoTrabajador'])->name('api.getTipoTrabajador');
 
 /** --CentroCostosController*/
 Route::get('/getCentrosCostos/',[CentroCostosController::class, 'getCentrosCostos'])->name('cencost.getCentrosCostos');
@@ -61,7 +62,7 @@ Route::post('/updateMovimientoPlanilla/',[MovimientoPlantillaController::class, 
 Route::post('/searchMovimientoPlanilla/',[MovimientoPlantillaController::class, 'searchMovimientoPlanilla'])->name('movplan.searchMovimientoPlanilla');
 
 /** --TrabajadorController*/
-Route::post('/getTrabajador/',[TrabajadorController::class, 'getTrabajador'])->name('trabajador.getTrabajador');
+Route::get('/getTrabajador/',[TrabajadorController::class, 'getTrabajador'])->name('trabajador.getTrabajador');
 Route::post('/insertTrabajador/',[TrabajadorController::class, 'insertTrabajador'])->name('trabajador.insertTrabajador');
 Route::post('/deleteTrabajador/',[TrabajadorController::class, 'deleteTrabajador'])->name('trabajador.deleteTrabajador');
 Route::post('/updateTrabajador/',[TrabajadorController::class, 'updateTrabajador'])->name('trabajador.updateTrabajador');
