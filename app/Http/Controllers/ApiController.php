@@ -33,7 +33,7 @@ class ApiController extends Controller
             return $response;
             //return response()->json(['success' => 1, 'message' => $response], 200);
         } catch (\Exception $th) {
-            return $th;
+            //return $th;
             return response()->json(['success' => 0, 'message' => $th], 201);
         }
     }

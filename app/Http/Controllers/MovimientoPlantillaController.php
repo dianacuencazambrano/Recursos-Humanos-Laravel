@@ -33,6 +33,7 @@ class MovimientoPlantillaController extends Controller
             //return $url;
             $response = Http::get($url);
             $response = $response->getBody();
+            return response()->json(['success' => 1, 'message' => $response[0], 'url' => $url], 200);
             return $response;
             // if ($response == '') {
             //     return response()->json(['success' => 0, 'message' => 'El Centro de Costo ya existe'], 201);
