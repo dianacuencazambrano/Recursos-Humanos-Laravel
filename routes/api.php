@@ -62,7 +62,7 @@ Route::post('/updateMovimientoPlanilla/',[MovimientoPlantillaController::class, 
 Route::post('/searchMovimientoPlanilla/',[MovimientoPlantillaController::class, 'searchMovimientoPlanilla'])->name('movplan.searchMovimientoPlanilla');
 
 /** --TrabajadorController*/
-Route::get('/getTrabajador/',[TrabajadorController::class, 'getTrabajador'])->name('trabajador.getTrabajador');
+Route::post('/getTrabajador/',[TrabajadorController::class, 'getTrabajador'])->name('trabajador.getTrabajador');
 Route::post('/insertTrabajador/',[TrabajadorController::class, 'insertTrabajador'])->name('trabajador.insertTrabajador');
 Route::post('/deleteTrabajador/',[TrabajadorController::class, 'deleteTrabajador'])->name('trabajador.deleteTrabajador');
 Route::post('/updateTrabajador/',[TrabajadorController::class, 'updateTrabajador'])->name('trabajador.updateTrabajador');
