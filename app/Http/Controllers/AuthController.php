@@ -63,7 +63,8 @@ class AuthController extends Controller
                 'access_token' => $token,
                 'user' => $nombreUsuario,
                 'date' => $date,
-                'company' => $company
+                'company' => $company,
+                'cod_emisor' => $codigoEmisor
             ]);
         } catch (\Throwable $th) {
             return response()->json(['success' => 0, 'message' => 'Existen errores en los datos ingresados'], 201);
