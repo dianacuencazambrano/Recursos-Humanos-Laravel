@@ -229,6 +229,11 @@ class ApiController extends Controller
         }
     }
 
+    /*[{"Codigo":"Comisionista Mixto","Descripcion":"3"},
+    {"Codigo":"Administrativo","Descripcion":"1"},
+    {"Codigo":"Comisionista","Descripcion":"2"},
+    {"Codigo":"Docente","Descripcion":"4"},
+    {"Codigo":"Servicios","Descripcion":"5"}]*/
     public function getTipoTrabajador()
     {
         try {

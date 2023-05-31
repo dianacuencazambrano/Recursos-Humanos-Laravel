@@ -87,7 +87,7 @@ class TrabajadorController extends Controller
     {
         try {
             $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
-            $url = $apiURL . '/api/Varios/TrabajadorDelete?sucursal=' . $request->sucursal . '&codigoempleado=' . $request->codigoempleado;
+            $url = $apiURL . '/api/Varios/TrabajadorDelete?sucursal='.$request->sucursal.'&codigoempleado='.$request->codigoempleado;
 
             $response = Http::get($url);
             $response = $response->getBody();
