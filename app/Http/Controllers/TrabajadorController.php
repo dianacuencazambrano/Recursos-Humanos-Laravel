@@ -24,58 +24,23 @@ class TrabajadorController extends Controller
     }
     public function insertTrabajador(Request $request)
     {
-        try {
+        //try {
             $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
-            $url = $apiURL . '/api/Varios/TrabajadorInsert?
-            COMP_Codigo='.$request->COMP_Codigo.'
-            &Tipo_trabajador='.$request->Tipo_trabajador.'
-            &Apellido_Paterno='.$request->Apellido_Paterno.'
-            &Apellido_Materno='.$request->Apellido_Materno.'
-            &Nombres='.$request->Nombres.'
-            &Identificacion='.$request->Identificacion.'
-            &Entidad_Bancaria='.$request->Entidad_Bancaria.'
-            &CarnetIESS='.$request->CarnetIESS.'
-            &Direccion='.$request->Direccion.'
-            &Telefono_Fijo='.$request->Telefono_Fijo.'
-            &Telefono_Movil='.$request->Telefono_Movil.'
-            &Genero='.$request->Genero.'
-            &Nro_Cuenta_Bancaria='.$request->Nro_Cuenta_Bancaria.'
-            &Codigo_Categoria_Ocupacion='.$request->Codigo_Categoria_Ocupacion.'
-            &Ocupacion='.$request->Ocupacion.'
-            &Centro_Costos='.$request->Centro_Costos.'
-            &Nivel_Salarial='.$request->Nivel_Salarial.'
-            &EstadoTrabajador='.$request->EstadoTrabajador.'
-            &Tipo_Contrato='.$request->Tipo_Contrato.'
-            &Tipo_Cese='.$request->Tipo_Cese.'
-            &EstadoCivil='.$request->EstadoCivil.'
-            &TipodeComision='.$request->TipodeComision.'
-            &FechaNacimiento='.$request->FechaNacimiento.'
-            &FechaIngreso='.$request->FechaIngreso.'
-            &FechaCese='.$request->FechaCese.'
-            &PeriododeVacaciones='.$request->PeriododeVacaciones.'
-            &FechaReingreso='.$request->FechaReingreso.'
-            &Fecha_Ult_Actualizacion='.$request->Fecha_Ult_Actualizacio.'
-            &EsReingreso='.$request->EsReingreso.'
-            &Tipo_Cuenta='.$request->Tipo_Cuenta.'
-            &FormaCalculo13ro='.$request->FormaCalculo13ro.'
-            &FormaCalculo14ro='.$request->FormaCalculo14ro.'
-            &BoniComplementaria='.$request->BoniComplementaria.'
-            &BoniEspecial='.$request->BoniEspecial.'
-            &Remuneracion_Minima='.$request->Remuneracion_Minima.'
-            &Fondo_Reserva='.$request->Fondo_Reserva.'
-            &Mensaje='.$request->Mensaje;
-
+            $url = $apiURL . '/api/Varios/TrabajadorInsert?COMP_Codigo='.$request->COMP_Codigo.'&Tipo_trabajador='.$request->Tipo_trabajador.'&Apellido_Paterno='.$request->Apellido_Paterno.'&Apellido_Materno='.$request->Apellido_Materno.'&Nombres='.$request->Nombres.'&Identificacion='.$request->Identificacion.'&Entidad_Bancaria='.$request->Entidad_Bancaria.'&CarnetIESS='.$request->CarnetIESS.'&Direccion='.$request->Direccion.'&Telefono_Fijo='.$request->Telefono_Fijo.'&Telefono_Movil='.$request->Telefono_Movil.'&Genero='.$request->Genero.'&Nro_Cuenta_Bancaria='.$request->Nro_Cuenta_Bancaria.'&Codigo_Categoria_Ocupacion='.$request->Codigo_Categoria_Ocupacion.'&Ocupacion='.$request->Ocupacion.'&Centro_Costos='.$request->Centro_Costos.'&Nivel_Salarial='.$request->Nivel_Salarial.'&EstadoTrabajador='.$request->EstadoTrabajador.'&Tipo_Contrato='.$request->Tipo_Contrato.'&Tipo_Cese='.$request->Tipo_Cese.'&EstadoCivil='.$request->EstadoCivil.'&TipodeComision='.$request->TipodeComision.'&FechaNacimiento='.$request->FechaNacimiento.'T00:00:00&FechaIngreso='.$request->FechaIngreso.'T00:00:00&FechaCese='.$request->FechaCese.'T00:00:00&PeriododeVacaciones='.$request->PeriododeVacaciones.'&FechaReingreso='.$request->FechaReingreso.'T00:00:00&Fecha_Ult_Actualizacion='.$request->Fecha_Ult_Actualizacio.'T00:00:00&EsReingreso='.$request->EsReingreso.'&Tipo_Cuenta='.$request->Tipo_Cuenta.'&FormaCalculo13ro='.$request->FormaCalculo13ro.'&FormaCalculo14ro='.$request->FormaCalculo14ro.'&BoniComplementaria='.$request->BoniComplementaria.'&BoniEspecial='.$request->BoniEspecial.'&Remuneracion_Minima='.$request->Remuneracion_Minima.'&Fondo_Reserva='.$request->Fondo_Reserva.'&Mensaje='.$request->Mensaje;
+            //return $url;
             $response = Http::post($url);
-            $response = $response->getBody();
-            return $response;
+
+            return response()->json(['success' => 1, 'message' => $response[0]->Mensaje], 200);
+            /* $response = $response->getBody();
+            return $response; */
             /* if ($response == '') {
                 return response()->json(['success' => 0, 'message' => 'El Centro de Costo ya existe'], 201);
             } else {
                 return response()->json(['success' => 1, 'message' => $response[0]], 200);
             } */
-        } catch (\Exception $th) {
+        /* } catch (\Exception $th) {
             return response()->json(['success' => 0, 'message' => $th], 201);
-        }
+        } */
     }
 
     public function deleteTrabajador(Request $request)
@@ -83,7 +48,7 @@ class TrabajadorController extends Controller
         try {
             $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/TrabajadorDelete?sucursal='.$request->sucursal.'&codigoempleado='.$request->codigoempleado;
-
+            
             $response = Http::get($url);
             $response = $response->getBody();
             return $response;
