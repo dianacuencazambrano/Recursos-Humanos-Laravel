@@ -56,21 +56,16 @@ class TrabajadorController extends Controller
             &FechaReingreso='.$request->FechaReingreso.'
             &Fecha_Ult_Actualizacion='.$request->Fecha_Ult_Actualizacio.'
             &EsReingreso='.$request->EsReingreso.'
-            &BancoCTA_CTE='.$request->BancoCTA_CTE.'
             &Tipo_Cuenta='.$request->Tipo_Cuenta.'
-            &RSV_Indem_Acumul='.$request->RSV_Indem_Acumul.'
-            &Año_Ult_Rsva_Indemni='.$request->Año_Ult_Rsva_Indemni.'
-            &Mes_Ult_Rsva_Indemni='.$request->Mes_Ult_Rsva_Indemni.'
             &FormaCalculo13ro='.$request->FormaCalculo13ro.'
             &FormaCalculo14ro='.$request->FormaCalculo14ro.'
             &BoniComplementaria='.$request->BoniComplementaria.'
             &BoniEspecial='.$request->BoniEspecial.'
             &Remuneracion_Minima='.$request->Remuneracion_Minima.'
-            &CuotaCuentaCorriente='.$request->CuotaCuentaCorriente.'
             &Fondo_Reserva='.$request->Fondo_Reserva.'
             &Mensaje='.$request->Mensaje;
 
-            $response = Http::get($url);
+            $response = Http::post($url);
             $response = $response->getBody();
             return $response;
             /* if ($response == '') {
