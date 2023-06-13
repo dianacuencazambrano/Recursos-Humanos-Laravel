@@ -12,7 +12,7 @@ class CentroCostosController extends Controller
     public function getCentrosCostos()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/CentroCostosSelect';
 
             $response = Http::get($url);
@@ -27,7 +27,7 @@ class CentroCostosController extends Controller
     public function insertCentrosCostos(Request $request)
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/CentroCostosInsert?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
 
             $response = Http::get($url);
@@ -44,7 +44,7 @@ class CentroCostosController extends Controller
     public function deleteCentrosCostos(Request $request)
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/CentroCostosDelete?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
 
             $response = Http::get($url);
@@ -62,7 +62,7 @@ class CentroCostosController extends Controller
     public function updateCentrosCostos(Request $request)
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/CentroCostosUpdate?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
 
             $response = Http::get($url);
@@ -80,7 +80,7 @@ class CentroCostosController extends Controller
     public function searchCentrosCostos(Request $request)
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/CentroCostosSearch?descripcioncentrocostos=' . $request->descripcioncentrocostos;
 
             $response = Http::get($url);

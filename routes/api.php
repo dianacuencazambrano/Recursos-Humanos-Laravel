@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TrabajadorController;
 use App\Http\Controllers\CentroCostosController;
 use App\Http\Controllers\MovimientoPlantillaController;
@@ -25,6 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/getMovPlanxTipoOperacion/',[DashboardController::class, 'getMovPlanxTipoOperacion'])->name('dashboard.getMovPlanxTipoOperacion');
 
 /** --AuthController*/
 Route::post('/login/',[AuthController::class, 'login'])->name('auth.login');
@@ -66,4 +68,6 @@ Route::post('/getTrabajador/',[TrabajadorController::class, 'getTrabajador'])->n
 Route::post('/insertTrabajador/',[TrabajadorController::class, 'insertTrabajador'])->name('trabajador.insertTrabajador');
 Route::post('/deleteTrabajador/',[TrabajadorController::class, 'deleteTrabajador'])->name('trabajador.deleteTrabajador');
 Route::post('/updateTrabajador/',[TrabajadorController::class, 'updateTrabajador'])->name('trabajador.updateTrabajador');
+
+
 

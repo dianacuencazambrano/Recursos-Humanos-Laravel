@@ -11,7 +11,7 @@ class MovimientoPlantillaController extends Controller
 {
     public function getMovimientoPlanilla()
     {
-        try {
+        //try {
             $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/MovimientoPlanillaSelect';
 
@@ -19,10 +19,10 @@ class MovimientoPlantillaController extends Controller
             $response = $response->getBody();
             return $response;
             //return response()->json(['success' => 1, 'message' => $response[0]], 200);
-        } catch (\Exception $th) {
+        /* } catch (\Exception $th) {
             //return response()->json(['success' => 0, 'message' => $th], 201);
             return $th;
-        }
+        } */
     }
 
     public function insertMovimientoPlanilla(Request $request)

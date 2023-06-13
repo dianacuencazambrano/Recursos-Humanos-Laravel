@@ -11,7 +11,7 @@ class ApiController extends Controller
     public function getEmisor()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/GetEmisor';
 
             $response = Http::get($url);
@@ -26,7 +26,7 @@ class ApiController extends Controller
     public function getTiposOperacion()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/TipoOperacion';
 
             $response = Http::get($url);
@@ -44,7 +44,7 @@ class ApiController extends Controller
     public function getMovExcepcion1y2()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/MovimientosExcepcion1y2';
 
             $response = Http::get($url);
@@ -62,7 +62,7 @@ class ApiController extends Controller
     public function getMovExcepcion3()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/MovimientosExcepcion3';
 
             $response = Http::get($url);
@@ -78,7 +78,7 @@ class ApiController extends Controller
     public function getTrabaAfectaIESS()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/TrabaAfectaIESS';
 
             $response = Http::get($url);
@@ -94,7 +94,7 @@ class ApiController extends Controller
     public function getTrabAfecImpuestoRenta()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/TrabAfecImpuestoRenta';
 
             $response = Http::get($url);
@@ -110,7 +110,7 @@ class ApiController extends Controller
     public function getGenero()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/Genero';
 
             $response = Http::get($url);
@@ -127,7 +127,7 @@ class ApiController extends Controller
     public function getEstadoTrabajador()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/EstadoTrabajador';
 
             $response = Http::get($url);
@@ -152,7 +152,7 @@ class ApiController extends Controller
     public function getTipoContrato()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/TipoContrato';
 
             $response = Http::get($url);
@@ -169,7 +169,7 @@ class ApiController extends Controller
     public function getTipoCese()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/TipoCese';
 
             $response = Http::get($url);
@@ -188,7 +188,7 @@ class ApiController extends Controller
     public function getEstadoCivil()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/EstadoCivil';
 
             $response = Http::get($url);
@@ -203,7 +203,7 @@ class ApiController extends Controller
     public function getEsReingreso()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/EsReingreso';
 
             $response = Http::get($url);
@@ -218,7 +218,7 @@ class ApiController extends Controller
     public function getTipoCuenta()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/TipoCuenta';
 
             $response = Http::get($url);
@@ -237,7 +237,7 @@ class ApiController extends Controller
     public function getTipoTrabajador()
     {
         try {
-            $apiURL = getenv('API_SERVICIOS');
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
             $url = $apiURL . '/api/Varios/TipoTrabajador';
 
             $response = Http::get($url);
