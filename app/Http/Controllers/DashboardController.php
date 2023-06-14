@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\TrabajadorController;
+use App\Http\Controllers\CentroCostosController;
 use App\Http\Controllers\MovimientoPlantillaController;
 use Illuminate\Http\Request;
 
@@ -39,5 +42,30 @@ class DashboardController extends Controller
         $data['egresos'] = $contE;
         $data['ninguno'] = $ninguno;
         return $data;
-    }   
+    }
+    
+    public function getTotales(Request $request){
+        $data = [];
+        $centroCostosController = new CentroCostosController;
+        $trabajadorController = new TrabajadorController;
+        $movimientoPlantillaController = new MovimientoPlantillaController;
+
+        $centrosCostos = $centroCostosController->getCentrosCostos();
+        $centrosCostos = json_decode($centrosCostos);
+        $totalCC = count($centrosCostos);
+
+        $trabajadores = $trabajadorController->getTrabajador($request);
+        $trabajadores = json_decode($trabajadores);
+        $totalTr = count($trabajadores);
+
+        $movPlantilla = $movimientoPlantillaController->getMovimientoPlanilla();
+        $movPlantilla = json_decode($movPlantilla);
+        $totalMov = count($movPlantilla);
+
+        $data['totalCC'] = $totalCC;
+        $data['totalTr'] = $totalTr;
+        $data['totalMov'] = $totalMov;
+        return $data;
+
+    }
 }

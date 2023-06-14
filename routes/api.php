@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/getMovPlanxTipoOperacion/',[DashboardController::class, 'getMovPlanxTipoOperacion'])->name('dashboard.getMovPlanxTipoOperacion');
+Route::post('/getTotales/',[DashboardController::class, 'getTotales'])->name('dashboard.getTotales');
 
 /** --AuthController*/
 Route::post('/login/',[AuthController::class, 'login'])->name('auth.login');
