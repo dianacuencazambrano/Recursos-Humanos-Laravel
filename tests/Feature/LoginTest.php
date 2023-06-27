@@ -3,15 +3,15 @@
 namespace Tests\Feature;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\AuthController;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-     /**
+    /**
      * @test
      */
-    public function login__is_correct(): void
+    public function login_is_correct(): void
     {
         $request = new Request([
             "nombreUsuario" => 5004,
@@ -19,9 +19,9 @@ class LoginTest extends TestCase
             "codigoEmisor" => 2
         ]);
 
-        $apiController = new ApiController();
+        $authController = new AuthController();
+        $response = $authController->login($request);
 
-        $response = $apiController->login($request);
         $this->assertEquals(200, $response->getStatusCode());
     }
 }
