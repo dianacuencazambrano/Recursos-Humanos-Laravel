@@ -13,6 +13,6 @@ class GetCentrosCostosTest extends TestCase
      */
     public function get_centro_costos_is_correct(): void
     {
-        $this->getJson(route('api.getCentrosCostos'))->assertStatus(200);
+        $this->getJson(route('cencost.getCentrosCostos'))->assertStatus(200);
     }
 }

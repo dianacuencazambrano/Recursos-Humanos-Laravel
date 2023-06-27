@@ -13,7 +13,6 @@ class GetTrabajadoresTest extends TestCase
      */
     public function get_trabajadores_is_correct(): void
     {
-        $this->getJson(route('api.getTrabajador'))->assertStatus(200);
-        
+        $this->postJson(route('trabajador.getTrabajador'))->assertStatus(200);
     }
 }
