@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 
-class UpdateTrabajador extends TestCase
+class UpdateTrabajadorTest extends TestCase
 {
     /**
      * A basic unit test example.

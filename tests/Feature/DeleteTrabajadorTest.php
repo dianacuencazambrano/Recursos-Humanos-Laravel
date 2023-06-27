@@ -8,12 +8,13 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Request;
 use Tests\TestCase;
 
-class DeleteTrabajador extends TestCase
+class DeleteTrabajadorTest extends TestCase
 {
-     /**
+    /**
      * @test
+     * A basic feature test example.
      */
-    public function delete_trabajador_is_correct(): void
+    public function test_example(): void
     {
         $request = new Request([
             'sucursal' => '',

@@ -8,12 +8,12 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Request;
 use Tests\TestCase;
 
-class InsertTrabajador extends TestCase
+class InsertTrabajadorTest extends TestCase
 {
     /**
      * A basic feature test example.
      */
-    public function insert_trabajador_is_correct(): void
+    public function test_example(): void
     {
         $request = new Request([
             'COMP_Codigo' => '2',
@@ -54,11 +54,9 @@ class InsertTrabajador extends TestCase
             'Fondo_Reserva' => 'M',
             'Mensaje' => '',
         ]);
-
         $apiController = new TrabajadorController();
 
-        $response = $apiController->insertCentrosCostos($request);
+        $response = $apiController->insertTrabajador($request);
         $this->assertEquals(200, $response->getStatusCode());
-
     }
 }

@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 
-class DeleteTrabajador extends TestCase
+class DeleteTrabajadorTest extends TestCase
 {
     /**
      * A basic unit test example.

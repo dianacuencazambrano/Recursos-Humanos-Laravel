@@ -5,15 +5,16 @@ namespace Tests\Feature;
 use App\Http\Controllers\TrabajadorController;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Http\Request;
 use Tests\TestCase;
 
-class UpdateTrabajador extends TestCase
+class UpdateTrabajadorTest extends TestCase
 {
     /**
+     * @test
      * A basic feature test example.
      */
-    public function update_trabajadaor_is_correct(): void
+    public function test_example(): void
     {
         $request = new Request([
             'COMP_Codigo' => '2',
