@@ -12,13 +12,12 @@ class DeleteTrabajadorTest extends TestCase
 {
     /**
      * @test
-     * A basic feature test example.
      */
-    public function test_example(): void
+    public function delete_trabajador_is_correct(): void
     {
         $request = new Request([
-            'sucursal' => '',
-            'codigoempleado' => '',
+            'sucursal' => '2',
+            'codigoempleado' => '1',
         ]);
 
         $apiController = new TrabajadorController();

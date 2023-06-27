@@ -12,9 +12,8 @@ class UpdateTrabajadorTest extends TestCase
 {
     /**
      * @test
-     * A basic feature test example.
      */
-    public function test_example(): void
+    public function update_trabajador_is_correct(): void
     {
         $request = new Request([
             'COMP_Codigo' => '2',

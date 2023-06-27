@@ -11,9 +11,9 @@ use Tests\TestCase;
 class InsertTrabajadorTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * @test
      */
-    public function test_example(): void
+    public function insert_trabajador_is_correct(): void
     {
         $request = new Request([
             'COMP_Codigo' => '2',
