@@ -46,6 +46,9 @@ Route::get('/getEstadoTrabajador/',[ApiController::class, 'getEstadoTrabajador']
 Route::get('/getTipoContrato/',[ApiController::class, 'getTipoContrato'])->name('api.getTipoContrato');
 Route::get('/getTipoCese/',[ApiController::class, 'getTipoCese'])->name('api.getTipoCese');
 Route::get('/getEstadoCivil/',[ApiController::class, 'getEstadoCivil'])->name('api.getEstadoCivil');
+Route::get('/getTipodeComision/',[ApiController::class, 'getTipodeComision'])->name('api.getTipodeComision');
+Route::get('/getCategoriaOcupacion/',[ApiController::class, 'getCategoriaOcupacion'])->name('api.getCategoriaOcupacion');
+Route::get('/getDecimoTerceroDecimoCuarto/',[ApiController::class, 'getDecimoTerceroDecimoCuarto'])->name('api.getDecimoTerceroDecimoCuarto');
 Route::get('/getEsReingreso/',[ApiController::class, 'getEsReingreso'])->name('api.getEsReingreso');
 Route::get('/getTipoCuenta/',[ApiController::class, 'getTipoCuenta'])->name('api.getTipoCuenta');
 Route::get('/getTipoTrabajador/',[ApiController::class, 'getTipoTrabajador'])->name('api.getTipoTrabajador');

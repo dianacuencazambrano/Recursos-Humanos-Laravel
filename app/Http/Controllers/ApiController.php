@@ -199,6 +199,66 @@ class ApiController extends Controller
         }
     }
 
+    //[{"Codigo":"Vendedor ","Descripcion":"N"},
+    //{"Codigo":"Otros","Descripcion":" "},
+    //{"Codigo":"Cobrador","Descripcion":"O"},
+    //{"Codigo":"Jefe Tienda ","Descripcion":"J"},
+    //{"Codigo":"Chofer","Descripcion":"H"},
+    //{"Codigo":"Cajero","Descripcion":"C"}]
+    public function getTipodeComision()
+    {
+        try {
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
+            $url = $apiURL . '/api/Varios/TipoComision';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+    //[{"Codigo":1,"Descripcion":"TRABAJADOR"},
+    //{"Codigo":2,"Descripcion":"EMPLEADOR"},
+    //{"Codigo":3,"Descripcion":"SERVICIOS PROFESIONALES"},
+    //{"Codigo":4,"Descripcion":"PERSONAL RELIGIOSO"},
+    //{"Codigo":5,"Descripcion":"AUTORIDADES Y DIRECTIVOS"},
+    //{"Codigo":6,"Descripcion":"PROFESORES"},
+    //{"Codigo":7,"Descripcion":"PERSONAL DE APOYO O AUXILIAR"},
+    //{"Codigo":8,"Descripcion":"PERSONAL DE SERVICIO"},
+    //{"Codigo":9,"Descripcion":"PERSONAL DE CONTABILIDAD"},
+    //{"Codigo":10,"Descripcion":"PERSONAL DE MANTENIMIENTO"},
+    //{"Codigo":11,"Descripcion":"PERSONAL DE SECRETARIA"},
+    //{"Codigo":12,"Descripcion":"PERSONAL DE CONSEJERIA"}]
+    public function getCategoriaOcupacion()
+    {
+        try {
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
+            $url = $apiURL . '/api/Varios/CategoriaOcupacional';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+    //[{"Codigo":"0","Descripcion":"Mensual"},
+    //{"Codigo":"1 ","Descripcion":"Acumulada"}]
+    public function getDecimoTerceroDecimoCuarto()
+    {
+        try {
+            $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
+            $url = $apiURL . '/api/Varios/DecimoTerceroDecimoCuarto';
+
+            $response = Http::get($url);
+            return $response;
+            //return response()->json(['success' => 1, 'message' => $response], 200);
+        } catch (\Exception $th) {
+            return response()->json(['success' => 0, 'message' => $th], 201);
+        }
+    }
+
     //[{"Codigo":"No","Descripcion":"0"},{"Codigo":"Si ","Descripcion":"1"}]
     public function getEsReingreso()
     {

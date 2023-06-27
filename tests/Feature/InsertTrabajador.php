@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\TrabajadorController;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Request;
