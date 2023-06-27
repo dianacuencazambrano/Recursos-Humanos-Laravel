@@ -55,7 +55,7 @@ class InsertTrabajador extends TestCase
             'Mensaje' => '',
         ]);
 
-        $apiController = new ApiController();
+        $apiController = new TrabajadorController();
 
         $response = $apiController->insertCentrosCostos($request);
         $this->assertEquals(200, $response->getStatusCode());

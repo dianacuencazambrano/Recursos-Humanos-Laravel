@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Http\Controllers\CentroCostosController;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class DeleteCentrosCostosTest extends TestCase
             'descripcioncentrocostos' => 'centroCosto132',
         ]);
 
-        $apiController = new ApiController();
+        $apiController = new CentroCostosController();
 
         $response = $apiController->deleteCentrosCostos($request);
         $this->assertEquals(200, $response->getStatusCode());

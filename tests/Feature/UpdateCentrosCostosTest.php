@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Http\Controllers\CentroCostosController;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class UpdateCentrosCostosTest extends TestCase
             'descripcioncentrocostos' => 'centroCosto1322222',
         ]);
 
-        $apiController = new ApiController();
+        $apiController = new CentroCostosController();
 
         $response = $apiController->updateCentrosCostos($request);
         $this->assertEquals(200, $response->getStatusCode());
