@@ -105,8 +105,8 @@ class ApiController extends Controller
         }
     }
 
-    // [{"Codigo":"Masculino ","Descripcion":"M"},
-    // {"Codigo":"Femenino","Descripcion":"F"}]
+    // [{"Codigo":"F","Descripcion":"Femenino"}
+    // {"Codigo":"M","Descripcion":"Maculino"}]
     public function getGenero()
     {
         try {

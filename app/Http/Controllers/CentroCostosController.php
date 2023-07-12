@@ -26,19 +26,20 @@ class CentroCostosController extends Controller
     }
     public function insertCentrosCostos(Request $request)
     {
-        try {
+        //try {
             $apiURL = 'http://apiservicios.ecuasolmovsa.com:3009';
-            $url = $apiURL . '/api/Varios/CentroCostosInsert?codigocentrocostos=' . $request->codigocentrocostos . '&descripcioncentrocostos=' . $request->descripcioncentrocostos;
-
+            $url = $apiURL.'/api/Varios/CentroCostosInsert?codigocentrocostos='.$request['codigocentrocostos'].'&descripcioncentrocostos='.$request['descripcioncentrocostos'];
+            //return $url;
             $response = Http::get($url);
+            return $response[0]['Mensaje'];
             if ($response == '') {
                 return response()->json(['success' => 0, 'message' => 'El Centro de Costo ya existe'], 201);
             } else {
                 return response()->json(['success' => 1, 'message' => $response[0]], 200);
             }
-        } catch (\Exception $th) {
-            return response()->json(['success' => 0, 'message' => $th], 201);
-        }
+        //} catch (\Exception $th) {
+            //return response()->json(['success' => 0, 'message' => $th], 201);
+        //}
     }
 
     public function deleteCentrosCostos(Request $request)
